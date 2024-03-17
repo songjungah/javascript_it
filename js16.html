@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복습</title>
+</head>
+<body>
+    <script>
+        // HTML : 문서
+        // CSS : style 보관함
+        // JavaScript : 프로그래밍 언어
+
+        // 변수 : 값을 저장하는 공간
+        // var, let, const 로 생성
+        var area
+        area = 3.14;  // =은 값을 담는다는 의미(같다X)   ===(같다)
+        area          // 이미 만든 공간은 var/let/const 키쿼드 없이 재사용
+                      // 한번 변수로 만든 공간은 다시 만들 수 없음
+
+        // 함수(코드를 저장하는 공간)
+        // function 으로 생성
+        function name(){
+            // () : 매개변수 - 재활용할 때 바꿔주고 싶은 값
+            // {} : 저장할 코드
+            // 한번 만든 함수는 function 키워드 없이 재활용 (중복이름생성 X)
+            // 재활용은 이름과 ()까지만 써줌
+
+        // 함수가 끝날 때 결과를 알려주고 싶다 return
+        // return 같은 변수로 담아서 사용
+        function result(){
+            return true // 함수가 끝날 때 true 라고 사용한 곳에 알려줌
+            console.log('죽은코드') // 여기까지 도달 X
+
+        // return이 있는 함수는 변수로 받거나 변수처럼 사용
+        console.log(returnUse())
+
+        var result2 = returnUse()
+        console.log(result2);
+
+        // 변수의 타입(자료형) : 정수, 실수, 문자열, 불린(논리값), 배열, 객체
+        // 정수 : 소수점 없는 숫자
+        var int = 1;    // 정수
+        var double = 3.14;  // 실수
+        var char = '글자'   // 문자열
+        var String = "123"  // 문자열 (사칙연산X ---> + 로 이어붙이기만 가능)
+        var boolean = true  // 논리값 : true or false 조건문에서 주로 사용
+        
+        // 배열 : 비슷한 형태의 변수를 여러개 따로 만드는게 아니라 세트로 관리하고 싶을 때 [] > 반복문
+        var spaces = [1,2,3]    // 공간 하나만 기억
+        }
+        }
+    </script>
+    
+</body>
+</html>

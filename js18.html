@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탭기능 만들기</title>
+    <style>
+        body{
+            margin: 0;
+        }
+
+        .tab-container{
+            width: 400px;
+            height: 300px;
+
+        }
+
+        .tab-container ul{
+            padding: 0;
+            font-size: 0;
+            margin: 0;
+        }
+
+        .tab-container li{
+            font-size: 16px;
+            display: inline-block;
+            padding: 10px 30px;
+            border: 1px solid lightblue;
+        }
+
+        .tab-selected{
+            border: 1px solid lightblue;
+            border-top: 3px solid palevioletred;
+            border-bottom: 0 !important;
+        }
+
+        .display-none{
+            display: none;
+        }
+
+        .tab-button{
+
+        }
+
+        .tab-content{
+
+        }
+
+    </style>
+</head>
+<body>
+        <div class="tab-container">
+            <ul>
+                <li class="tab-button tap-selected">TAB1</li>
+                <li class="tab-button">TAB2</li>
+                <li class="tab-button">TAB3</li>
+            </ul>
+
+            <div class="tab-content">
+                TAB1의 내용
+            </div>
+            <div class="tab-content display-none">
+                TAB2의 내용
+            </div>
+            <div class="tab-content display-none">
+                TAB3의 내용
+            </div>
+        </div>
+
+        <script>
+
+            var tabNums = document.querySelectorAll('.tab-button').length
+
+            for(let num = 0; num < tabNums; num++){
+                document.querySelectorAll('.tab-button')[num].addEventListener('click',function(){
+                    for(let i=0; i<tabNums; i++){
+                        document.querySelectorAll('.tab-content')[i].classList.add('display-none');
+                        document.querySelectorAll('.tab-button')[i].classList.remove('tab-selected');
+                    }
+                        document.querySelectorAll('.tab-content')[num].classList.remove('display-none');
+                        document.querySelectorAll('.tab-button')[num].classList.add('tab-selected');
+                    }
+                )}
+
+
+
+            /* document.querySelectorAll('.tab-button')[0].addEventListener('click',function(){
+                //  모든 tab-content 에다가 display-none 을 붙여주고
+                //  선택된 tab-content 에다가 display-none 을 제거한다
+                //  모든 tab-button 의 tab-selected 를 제거하고
+                //  선택된 tab-button 에 tab-selected 를 추가한다
+
+                for(let i=0; i<3; i++){
+                    document.querySelectorAll('.tab-content')[i].classList.add('display-none');
+                    document.querySelectorAll('.tab-button')[i].classList.remove('tab-selected');
+                }
+                document.querySelectorAll('.tab-content')[0].classList.remove('display-none');
+                document.querySelectorAll('.tab-button')[0].classList.add('tab-selected');
+            })
+
+            document.querySelectorAll('.tab-button')[1].addEventListener('click',function(){
+                //  모든 tab-content 에다가 display-none 을 붙여주고
+                //  선택된 tab-content 에다가 display-none 을 제거한다
+                //  모든 tab-button 의 tab-selected 를 제거하고
+                //  선택된 tab-button 에 tab-selected 를 추가한다
+
+                for(let i=0; i<3; i++){
+                    document.querySelectorAll('.tab-content')[i].classList.add('display-none');
+                    document.querySelectorAll('.tab-button')[i].classList.remove('tab-selected');
+                }
+                document.querySelectorAll('.tab-content')[1].classList.remove('display-none');
+                document.querySelectorAll('.tab-button')[1].classList.add('tab-selected');
+            })
+
+            document.querySelectorAll('.tab-button')[2].addEventListener('click',function(){
+                //  모든 tab-content 에다가 display-none 을 붙여주고
+                //  선택된 tab-content 에다가 display-none 을 제거한다
+                //  모든 tab-button 의 tab-selected 를 제거하고
+                //  선택된 tab-button 에 tab-selected 를 추가한다
+
+                for(let i=0; i<3; i++){
+                    document.querySelectorAll('.tab-content')[i].classList.add('display-none');
+                    document.querySelectorAll('.tab-button')[i].classList.remove('tab-selected');
+                }
+                document.querySelectorAll('.tab-content')[2].classList.remove('display-none');
+                document.querySelectorAll('.tab-button')[2].classList.add('tab-selected');
+            })
+        */
+           
+            
+        </script>
+</body>
+</html>
