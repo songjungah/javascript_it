@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건실습</title>
+    <style>
+        body{
+            margin: 0;
+        }
+
+        .header{
+            width: 100%;
+            background: lightblue;
+        }
+
+        .header .inner-header{
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .header li{
+            display: inline-block;
+            padding: 0 10px;
+        }
+
+        .content{
+            width: 100%;
+            background: black;
+            color: white;
+            display: flex;
+            display: none;
+            /* Z축으로 띄우기 - position 사용이 필요 */
+            z-index: 5;  
+            position: fixed;
+           
+            /* position > 기본 : static / 
+                내 위치를 기준으로 : relative / 
+                relative 를 가진 부모를 기준으로 : absolute /
+                내 화면을 기준으로 : fixed /
+                내가 보는 현재화면(스크롤) 기준으로 : sticky
+                */
+        }
+        
+        .content div{
+            padding: 0 30px;
+        }
+
+        .content ul{
+            padding: 0;
+        }
+
+        .content li{
+            list-style-type: none;
+        }
+
+        .back-black{
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            position: fixed; /* 전체 화면 기준으로 동작(z-index 사용이 가능) */
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            left: 0;
+
+            height: 0;
+            opacity: 0;
+            visibility: hidden;
+            
+            transition: all 0.5s; /* 모든 상태변화는 0.5초 시간소요 */
+            
+            /* 
+            visibility: collapse;
+            height: 100%;
+            opacity: 80%;
+            */
+            
+        }
+
+        .back-white{
+            background: white;
+            width: 400px;
+            height: 400px;
+            padding: 30px;
+        }
+
+        .back-white input[type="text"],
+        .back-white input[type="password"]{
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="inner-header">  
+            <h3 id="logo">로고제목</h3>
+                <ul id="top-show-down">
+                    <li>Coffee</li>
+                    <li>latte</li>
+                    <li>etc</li>
+                </ul>
+            </div>      
+    </div>
+    <div class="content">
+        <div>
+            <p>COFFEE</p>
+                <ul>
+                    <li>아메리카노</li>
+                    <li>아메리카노</li>
+                    <li>아메리카노</li>
+                </ul>
+        </div>
+        <div>
+            <p>LATTE</p>
+                <ul>
+                    <li>카페라떼</li>
+                    <li>카페라떼</li>
+                    <li>카페라떼</li>
+                </ul>
+        </div>
+    </div>
+
+    <!-- 버튼을 클릭하면 doModel() 이라는 함수를 사용 -->
+    <button onclick="doModel()">새로운 창 열기</button>
+    <div class="back-black">
+        <div class="back-white">
+            <h4>제목</h4>
+            <form>
+                <input type="text" placeholder="아이디를 입력하세요">
+                <input type="password" placeholder="비밀번호를 입력하세요">
+                <!-- 
+                    submit : 백엔드로 전달 
+                    button : 백엔드로 전달 안할때
+                -->
+                <input type="submit" value="로그인">
+                <input type="button" value="닫기" onclick="closeModel()">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var check = false;
+
+        // html에서 logo 라는 아이디를 찾아서 클릭이벤트를 주라는 의미
+        document.getElementById('logo').addEventListener('click',function(){
+            // 콜백함수 : 매개변수로 재활용되는 함수
+            // 만약에 상태가 안보여주는 상태면 보여주게 바꿔라 (flex)
+            // 그게 아니라면(보여주는 상태라면) 안보여주게 바꿔라 (none)
+           if(check === false){
+            // content 를 display : flex로 + 상태관리
+            document.querySelector('.content').style.display = 'flex'; // class 를 찾을 때 쓰는 방법
+            check = true
+           }else{
+            // content 를 display : none로 + 상태관리
+            document.querySelector('.content').style.display = 'none';
+            check = false
+           }
+            
+        })
+
+
+        var mouse = false;
+
+        // HTML 에서 top-show-down 이라는 아이디를 찾아서 마우스 오버 이벤트를 줘라
+        document.getElementById('top-show-down').addEventListener('mouseover', function(){
+            if(mouse === false){
+            document.querySelector('.content').style.display = 'flex';
+            mouse = true;
+            }
+        })
+        // HTML 에서 top-show-down 이라는 아이디를 찾아서 마우스 리스 이벤트를 줘라
+        document.getElementById('top-show-down').addEventListener('mouseleave', function(){
+            if(mouse === true){
+                document.querySelector('.content').style.display = 'none';
+                mouse = false;
+            }
+        })
+
+        function doModel(){
+            // 평소에는 숨겨놓은 창을 보여주게 바꿈
+            /* 
+            visibility: collapse;
+            height: 100%;
+            opacity: 80%;
+            */
+           document.querySelector('.back-black').style.visibility = 'visible';
+           document.querySelector('.back-black').style.height = '100%';
+           document.querySelector('.back-black').style.opacity = '100%';
+        }
+
+        // 함수를 closeModel() 함수를 만들어주세요.
+        function closeModel(){
+            document.querySelector('.back-black').style.visibility = 'hidden';
+           document.querySelector('.back-black').style.height = '0%';
+           document.querySelector('.back-black').style.opacity = '0%';
+        }
+
+
+    </script>
+    
+</body>
+</html>
