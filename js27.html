@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow_funciton</title>
+    <style>
+        .select-tag{
+
+        }
+
+        .display-none{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <select class="select-tag">
+            <option>커피</option>
+            <option>주스</option>
+            <option>차</option>
+        </select>
+
+        <select class="select-tag display-none">
+            <option>1잔</option>
+            <option>2잔</option>
+            <option>3잔</option>
+        </select>
+    </form>
+
+    <script>
+        // 하나의 클래스명을 여러군데 사용하면
+        // querySelectorAll 을 통해서 배열로 찾기
+        // [0], [1], [2]
+        document.querySelectorAll('.select-tag')[0].addEventListener('input',(e)=>{
+            // 이벤트 준 타겟 document.querySelectorAll('.select-tag')[0]을 다시 찾아옴
+            // value : 입력되어 있는 값 을 의미
+            if(e.target.value == '주스'){ // 선택된 값을 가져옴
+                    // alert(e.target.value)
+                    // 두번째 있는 select-tag 의 display-none 클래스를 제거
+                    document.querySelectorAll('.select-tag')[1].classList.remove('display-none');
+                }else{
+                    // alert(e.target.value)
+                    // 두번째 있는 select-tag 의 display-none 클래스를 추가
+                    document.querySelectorAll('.select-tag')[1].classList.add('display-none');
+                }
+            })
+
+            var vari = function(){}
+            vari = ()=>{}
+
+            vari = function(매개변수){}
+            vari = (매개변수)=>{}
+
+            vari = function(){return true}
+            vari = ()=>{true}   // 한 줄만 적으면 return의 효과가 있음
+
+            vari = function(a,b){
+                let sum = a+b
+                return sum
+            }
+            vari = (a,b)=>{
+                let sum = a+b
+                return sum
+            }
+    </script>
+</body>
+</html>
