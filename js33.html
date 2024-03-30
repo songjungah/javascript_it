@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid</title>
+    <style>
+        body{
+            margin : 0;
+        }
+        div, input, textarea{
+            box-sizing: border-box;
+        }
+
+        .grid-container1{
+            display: grid;
+            width: 300px;
+            height: 300px;
+            grid-template-areas:
+            ". . ."
+            ". . ."
+            ". . . "
+            ;
+        }
+
+        .grid-container1 div{
+            border: 2px solid yellowgreen;
+        }
+
+        .grid-container2{
+            display: grid;
+            width: 300px;
+            height: 300px;
+            grid-template-areas:
+            "위쪽 위쪽 위쪽"
+            "왼쪽 안쪽 안쪽"
+            "왼쪽 안쪽 안쪽"
+            ;
+        }
+
+        .grid-container2 div{
+            border: 2px solid yellowgreen;
+        }
+
+
+        .first{
+            grid-area: 위쪽;
+        }
+
+        .second{
+            grid-area: 왼쪽;
+        }
+
+        .third{
+            grid-area: 안쪽;
+        }
+
+        .grid-layout{
+            display: grid;
+            width: 150px;
+            height: 150px;
+            grid-template-areas: 
+            "photo1 photo1 photo2"
+            "photo1 photo1 photo3"
+            "photo4 photo5 photo6"
+            ;
+        }
+
+        .grid-layout div{
+            border : 2px solid lightblue;
+        }
+
+        .photo1{
+            grid-area : photo1;
+        }
+
+        .photo2{
+            grid-area : photo2;
+        }
+
+        .photo3{
+            grid-area : photo3;
+        }
+
+        .photo4{
+            grid-area : photo4;
+        }
+
+        .photo5{
+            grid-area : photo5;
+        }
+
+        .photo6{
+            grid-area : photo6;
+        }
+
+        .photo1 img{
+            width: 100%;
+            height: 100%;
+        }
+
+
+        @media screen and (max-width:768px) {
+            .grid-layout{
+            display: grid;
+            width: 300px;
+            height: 300px;
+            grid-template-areas: 
+            "photo1"
+            "photo2"
+            "photo3"
+            "photo4"
+            "photo5"
+            "photo6"
+            ;
+          }
+
+        }
+
+        /* media screen 은 CSS 맨 마지막에 해줘여함 */
+        /* @media screen and (max-width:768px) { 
+                .grid-container2{
+                width: 300px;
+                height: 300px;
+                grid-template-areas:
+                "위쪽"
+                "왼쪽"
+                "안쪽"
+                ;
+            }
+        } */
+    </style>
+</head>
+<body>
+    <div class="grid-container1">
+        <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+        <div class="inner">4</div>
+        <div class="inner">5</div>
+        <div class="inner">6</div>
+        <div class="inner">7</div>
+        <div class="inner">8</div>
+        <div class="inner">9</div>
+    </div>
+    <br>
+    <div class="grid-container2">
+        <div class="inner first">1</div>
+        <div class="inner second">2</div>
+        <div class="inner third">3</div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="grid-layout">
+        <div class="photo1"><img src="https://picsum.photos/500?r=0" alt="" width="100%" height="100%"></div>
+        <div class="photo2"><img src="https://picsum.photos/500?r=1" alt="" width="100%" height="100%"></div>
+        <div class="photo3"><img src="https://picsum.photos/500?r=2" alt="" width="100%" height="100%"></div>
+        <div class="photo4"><img src="https://picsum.photos/500?r=3" alt="" width="100%" height="100%"></div>
+        <div class="photo5"><img src="https://picsum.photos/500?r=4" alt="" width="100%" height="100%"></div>
+        <div class="photo6"><img src="https://picsum.photos/500?r=5" alt="" width="100%" height="100%"></div>
+    </div>
+
+
+</body>
+</html>
