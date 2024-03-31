@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>...</title>
+</head>
+<body>
+    <script>
+        // spread operator : 분할기능(배열과 오브젝트를 분할)
+        // ... 으로 사용
+        // 1. 배열 백업(기존 배열이 바뀌어도 유지)
+        // 2. 배열 합치기
+
+        var 배열 = ['가','나','다']
+        console.log(...배열);    // 가 나 다
+
+        var 문자열 = "문자열도 사실은 배열이었다?"
+        console.log(...문자열)      // 문 자 열 도 사 실 ~~
+
+        // 히히 라는 배열2에다가 배열을 넣어야지
+        var 배열2 = 배열;
+
+        var 정수1 = 1
+        var 정수2 = 정수1    // = 을 기준으로 오른쪽은 값이고, 왼쪽은 공간의 개념으로
+
+        정수1 = 3
+        console.log(정수1)  //3
+        console.log(정수2)  //1
+
+        // 나는 원본이 바뀌어도 기존에 백업해 놓은 것은 유지하고 싶다
+        // 분해하고 다시 배열로 만들어주기
+        var 배열3 = [...배열]
+        배열[0] = '하'
+        console.log(배열)   //하, 나, 다
+        console.log(배열2)  //하, 나, 다(배열이나 오브젝트는 원본이 바뀌면 복제품도 바뀜)
+        console.log(배열3)  //가, 나, 다(분해해서 새로 만든 것이기 때문에 원본 바뀌어도 상관없음)
+
+        var 배열4 = [...배열, ...배열3]     // 두개의 배열을 합치고 싶으면 ... 을 사용한다
+        console.log(배열4)
+
+
+        var object1 = {
+            '키1':'값1',
+            '키2':[1,2,3],
+            '키3':{},
+            '키4':[
+                {},
+                {},
+                {}
+            ]
+        }
+
+        // var object2 = object1    // 사실은 오브젝트 1과 2는 같은 것이다
+        var object2 = {...object1}  // 오브젝트를 해제했다가 새로운 오브젝트로 만든다
+        object1['키1'] = '대입'
+
+        console.log(object1);
+        console.log(object2);
+
+        var object3 = {
+            '키4':1,
+            '키5':3
+        }
+
+        // 오브젝트1 과 오브젝트3 을 합치겠다 > ... 사용
+        var object5 = {...object1, object3}     // 해체했다가 다시 묶는다 (배열이랑 오브젝트만)
+        console.log(object5)
+
+
+        // ...이 function 의 매개변수로 사용되면
+        // 해체해서 각각 담는다
+        var arr5 = [1,2,3]
+
+        // function temp(arr5){
+        //     console.log(arr5)
+        // }
+
+        function temp(arr5, arr6, arr7){    //잘쓰지않음
+            console.log(arr5)
+            console.log(arr6)
+            console.log(arr7)
+        }
+
+        temp(...arr5);
+        temp(arr5[0], arr5[1], arr5[2])
+
+    </script>
+</body>
+</html>
